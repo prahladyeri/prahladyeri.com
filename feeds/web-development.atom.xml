@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Prahlad Yeri's Blog - Web Development</title><link href="https://prahladyeri.com/" rel="alternate"></link><link href="https://prahladyeri.com/feeds/web-development.atom.xml" rel="self"></link><id>https://prahladyeri.com/</id><updated>2018-07-05T17:06:00+05:30</updated><subtitle>Educate and solve problems is my mantra. I'm skilled in web development and a quick learner, I also like blogging and contributing to open source.</subtitle><entry><title>What problem is React/JSX solving in your App?</title><link href="https://prahladyeri.com/blog/2018/07/what-problem-is-react-jsx-solving.html" rel="alternate"></link><published>2018-07-05T17:06:00+05:30</published><updated>2018-07-05T17:06:00+05:30</updated><author><name>Prahlad Yeri</name></author><id>tag:prahladyeri.com,2018-07-05:/blog/2018/07/what-problem-is-react-jsx-solving.html</id><summary type="html">&lt;p&gt;Framework wars and debates are very much a thing these days, be it Angular vs Backbone or Angular vs React, but the real debate isn't about these frameworks. The real debate essentially comes down to which is the most efficient way of structuring your app and more importantly, rendering and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Framework wars and debates are very much a thing these days, be it Angular vs Backbone or Angular vs React, but the real debate isn't about these frameworks. The real debate essentially comes down to which is the most efficient way of structuring your app and more importantly, rendering and managing your DOM.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;Whilst the traditional jQuery/Backbone way is to render the DOM directly using methods like \$(component).html("DOM Code"), React considers it an anti-pattern and recommends the way of virtual DOM - a concept where you don't render the DOM directly as it is, but keep a virtual copy of it and render only the differential which is essentially &lt;em&gt;patching&lt;/em&gt; the DOM.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="JavaScript Frameworks" class="alignnone size-full wp-image-812" height="426" src="/uploads/2018/07/js-frameworks.jpeg" width="640"&gt;&lt;/p&gt;
+&lt;p&gt;One thing that comes to mind is that more than an improvement over the former approach, you are basically trading off CPU overhead for lesser memory usage. The former jQuery approach is more &lt;strong&gt;memory intensive&lt;/strong&gt; as the browser needs to keep large amount of DOM structural code in memory until its rendered (yeah, it gets pretty large in a non-trivial app with lots of widgets that may need to be rendered in a complex array of patterns). However, what exactly are we gaining by using the JSX virtual DOM method? The JSX approach is just as much &lt;strong&gt;CPU intensive&lt;/strong&gt; as the jQuery approach is RAM intensive because it takes just as many CPU cycles to compute the differential and come up with a "patch" version of the DOM. In fact, the trade-off may be even worse considering that React is more of a library overhead than jQuery which is just a light "write less do more" wrapper over JavaScript DOM manipulation functions.&lt;/p&gt;
+&lt;p&gt;The real question we should be asking ourselves is why do we keep looking for that holy-grail JavaScript framework every now and then? Yesterday it was angularjs, today its React and tomorrow it will be vue.js. Instead of running after the shiny new framework, why not sit down and see what you are doing wrong with the present tools you have. After all, these tools are industry proven and they still exist for a reason.&lt;/p&gt;
+&lt;p&gt;I think most of the issues with using jQuery come from incorrect usage patterns than any problems associated with actual rendering. Consider the following often used pattern for rendering view blocks:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$.get(&amp;quot;partials/navbarTemplate.html&amp;quot;, function(data){
+  $(&amp;quot;#div-navbar&amp;quot;).html(data); //render a template
+  ..
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This coding pattern is typically abhorred by most React experts as they feel that rendering a whole bunch of html code (data argument in this case) is an anti pattern as the browser has to repeatedly render a lot of boiler-plate DOM unnecessarily. However, that's only true if you do this often times and repeatedly call this function. If you use a good architectural pattern for structuring your app (like the one provided by Backbone.js), you can render this same DOM in a very idempotent way:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;app.NavbarView = Backbone.View.extend({
+    el: &amp;quot;#div-navbar&amp;quot;,
+    initialize: function() {
+        var temp = this;
+        $.get(&amp;quot;partials/navbarTemplate.html&amp;quot;, function(e){
+            temp.template = _.template(e, {});
+        });
+    },
+    render: function() {
+        this.$el.html(this.template());
+    },
+
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In above code, we are still using jQuery.get, but in a more organized and structured way. Firstly, we call jQuery.get only in the initialization of the view to get the template and store it in the cache, so the network overhead isn't involved each time we need to use a template. Furthermore, backbone itself caches and stores the block element to be rendered (this.\$el), so that we don't have to trouble the browser with other areas of the DOM where rendering isn't required. Finally, we just call the underscore template and render the element:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;this.$el.html(this.template());
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Of course, this could be probably further optimized by using jQuery.empty().append() instead of jQuery.html() if you want to tweak the last drop of performance!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;this.$el.empty().html(this.template());
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;However, I don't think this kind of premature optimization is really needed unless you are building a really complex app and even then this isn't required in about 90% of the cases, the browsers have become considerably fast in recent years, at least in the area of DOM rendering.&lt;/p&gt;
+&lt;p&gt;And this is exactly why I think that using virtual DOM libraries like React is an anti-pattern. You are essentially stepping into the shoes of the browser, isn't it? If the kind of partial patching implemented by React is really efficient, wouldn't the browsers be doing it themselves? Maybe they will take some of the best ideas from React and JSX, and implement it themselves in the coming future, but why should &lt;em&gt;you&lt;/em&gt; (as a programmer) be bothered with that is what I don't understand.&lt;/p&gt;
+&lt;p&gt;This whole debate about frameworks is pretty much centered on separation of concerns essentially (models, views and controllers/organizers should all be cleanly separated) and to some extent, React is going against that separation by doing what the browser is supposed to do.&lt;/p&gt;</content><category term="Backbone"></category><category term="JavaScript"></category><category term="React"></category></entry><entry><title>Webpack Project has a Vulnerability</title><link href="https://prahladyeri.com/blog/2018/06/webpack-project-is-sitting-on-a-vulnerability-avoid-it-at-all-costs.html" rel="alternate"></link><published>2018-06-28T19:09:00+05:30</published><updated>2018-06-28T19:09:00+05:30</updated><author><name>Prahlad Yeri</name></author><id>tag:prahladyeri.com,2018-06-28:/blog/2018/06/webpack-project-is-sitting-on-a-vulnerability-avoid-it-at-all-costs.html</id><summary type="html">&lt;p&gt;The other day, I was going through this &lt;a href="https://medium.com/p/73fac4bc5068"&gt;medium post&lt;/a&gt; which describes the kind of chaos and insecurity currently plaguing the JavaScript world, and the &lt;em&gt;numero uno&lt;/em&gt; reason for that is the astronomical number of npm packages.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;When you usually install a non-trivial library or application through a package manager …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The other day, I was going through this &lt;a href="https://medium.com/p/73fac4bc5068"&gt;medium post&lt;/a&gt; which describes the kind of chaos and insecurity currently plaguing the JavaScript world, and the &lt;em&gt;numero uno&lt;/em&gt; reason for that is the astronomical number of npm packages.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;When you usually install a non-trivial library or application through a package manager, the expectation is that the number of dependencies should be as less as possible. This not only helps you in managing the disk space (very important for cloud hosting), but also makes a manageable code audit possible. For instance, the Python's Flask package (which is a considerably large web framework, a lot more complex than Webpack which is just a JavaScript bundler) has the &lt;a href="https://github.com/pallets/flask/blob/master/setup.py"&gt;following four dependencies&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; install_requires=[
+ &amp;#39;Werkzeug&amp;gt;=0.14&amp;#39;,
+ &amp;#39;Jinja2&amp;gt;=2.10&amp;#39;,
+ &amp;#39;itsdangerous&amp;gt;=0.24&amp;#39;,
+ &amp;#39;click&amp;gt;=5.1&amp;#39;,
+],
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On the other hand, this trivial Webpack package on NPM has an astounding &lt;a href="https://www.npmjs.com/package/webpack"&gt;25 dependencies on various 3rd party packages&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@webassemblyjs/ast
+ @webassemblyjs/helper-module-context
+ @webassemblyjs/wasm-edit
+ @webassemblyjs/wasm-opt
+ @webassemblyjs/wasm-parser
+ acorn
+ acorn-dynamic-import
+ ajv
+ ajv-keywords
+ chrome-trace-event
+ enhanced-resolve
+ eslint-scope
+ json-parse-better-errors
+ loader-runner
+ loader-utils
+ memory-fs
+ micromatch
+ mkdirp
+ neo-async
+ node-libs-browser
+ schema-utils
+ tapable
+ uglifyjs-webpack-plugin
+ watchpack
+ webpack-sources
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;However, your worry hasn't even started yet, your real worry starts when you realize that the other super-trivial package mentioned in that article called &lt;strong&gt;&lt;a href="https://www.npmjs.com/package/is-odd"&gt;is-odd&lt;/a&gt;&lt;/strong&gt;  has a whopping statistics of &lt;strong&gt;1.4 million&lt;/strong&gt; downloads per week:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="is odd" class="alignnone size-full wp-image-699" height="445" src="/uploads/2018/06/is-odd.png" width="453"&gt;&lt;/p&gt;
+&lt;p&gt;Now, any programmer worth his salt will know that its a &lt;a href="https://stackoverflow.com/questions/6211613/testing-whether-a-value-is-odd-or-even"&gt;one line coding effort&lt;/a&gt; to determine whether a given number is odd or even, even in JavaScript:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;isEven&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;isOdd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;Math&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;n&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, our master programmer who developed this "&lt;em&gt;is-odd as a service&lt;/em&gt;" not only goes ahead and registers whole new npm packages called is-odd and is-even, but also makes a lot of his other packages depend on it. Can you even begin to imagine what kind of bureaucratic politician you have to be in order to do that!&lt;/p&gt;
+&lt;p&gt;Now, this in itself couldn't have caused any problem, the real issue here is that the highly reputed and popular &lt;strong&gt;Webpack&lt;/strong&gt; project is also using one of his packages (for doing a trivial regular expression check on a string) and the dependency chain is such that the following four packages are also pulled in whenever you install &lt;strong&gt;Webpack&lt;/strong&gt; from npm since Webpack depends on them (and this is what explains is-odd's 1.4 million weekly download figure):&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;is-odd -&amp;gt; nanomatch -&amp;gt; micromatch -&amp;gt; webpack&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now, even a CS undergraduate should be able to see the management nightmare, not only of burdening your hard disk space of these additional packages whenever you &lt;strong&gt;npm install webpack&lt;/strong&gt;, but also the security nightmares associated with it. In future, if the developer of &lt;strong&gt;is-odd&lt;/strong&gt; package clubbed some malware in his code and propagated it throughout the node-ecosystem, can you even begin to imagine the disaster its going to cause on your production machines? I agree that this applies to other packaging systems like &lt;strong&gt;pip&lt;/strong&gt; and &lt;strong&gt;composer&lt;/strong&gt; too, but problem here is that the number of npm packages is too large and too unmanageable.&lt;/p&gt;
+&lt;p&gt;And to top it, the developers in the ecosystem are paying no heed to this, they think this is something to be proud of and worthy of chest thumping. They should try to understand that DRY (Don't Repeat Yourself) becomes a self-harming pattern beyond a certain extent, especially when you start releasing packages like is-odd and is-even. They get argumentative and counter you with a militant defense when you try to explain this point to them. For instance, I raised &lt;a href="https://github.com/webpack/webpack/issues/7591"&gt;an issue on Webpack's Github repository a few days ago&lt;/a&gt; for this exact problem (&lt;strong&gt;remove dependency from micromatch package&lt;/strong&gt;) and they simply closed it down giving some hilarious arguments. Their arguments are really interesting, but beyond sanity for someone who values security and maintainability of production applications.&lt;/p&gt;</content><category term="Open Source"></category><category term="JavaScript"></category></entry><entry><title>Google appengine tip: How to clear appcfg credential cache</title><link href="https://prahladyeri.com/blog/2014/01/google-appengine-tip-how-to-clear-appcfg-credential-cache.html" rel="alternate"></link><published>2014-01-19T23:19:00+05:30</published><updated>2014-01-19T23:19:00+05:30</updated><author><name>Prahlad Yeri</name></author><id>tag:prahladyeri.com,2014-01-19:/blog/2014/01/google-appengine-tip-how-to-clear-appcfg-credential-cache.html</id><summary type="html">&lt;p&gt;Many a times, it so happens that you need to work with multiple credentials while uploading/downloading apps on Google appengine. In such a scenario, it becomes difficult to switch credentials instantly.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/uploads/old/gae_new_Logo.png"&gt;&lt;img alt="gae_new_Logo" class="alignnone size-full wp-image-1382" height="48" src="/uploads/old/gae_new_Logo.png" width="54"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For instance, you have just uploaded an app using appcfg.py with your google credentials and they are …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Many a times, it so happens that you need to work with multiple credentials while uploading/downloading apps on Google appengine. In such a scenario, it becomes difficult to switch credentials instantly.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/uploads/old/gae_new_Logo.png"&gt;&lt;img alt="gae_new_Logo" class="alignnone size-full wp-image-1382" height="48" src="/uploads/old/gae_new_Logo.png" width="54"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For instance, you have just uploaded an app using appcfg.py with your google credentials and they are still stored in the cache. So when you want to upload a new app, it won't ask you for email/password and still try to retrieve old credentials automatically ignoring any command-line parameters you have given! Thus, you keep scratching your head as to why you are getting a permission-denied error while uploading/downloading the app!&lt;/p&gt;
+&lt;p&gt;The only way out here is clearing the credential cache of appcfg. On Linux systems, these are stored in a file called:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/home/username/.appcfg_cookies
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On Windows based systems, these are typically stored in:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;C:\Users\username\.appcfg_cookies
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Just delete this file and you are done! Next time, appcfg.py will ask you for a fresh google email and password, thus enabling you to upload/download your app.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;References:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/questions/5149914/how-to-save-my-user-account-and-password-in-google-app-engine-launcher"&gt;http://stackoverflow.com/questions/5149914/how-to-save-my-user-account-and-password-in-google-app-engine-launcher&lt;/a&gt;&lt;/p&gt;</content><category term="Google App Engine"></category></entry></feed>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Prahlad Yeri's Blog - Blogging</title><link href="https://prahladyeri.com/" rel="alternate"></link><link href="https://prahladyeri.com/feeds/blogging.atom.xml" rel="self"></link><id>https://prahladyeri.com/</id><updated>2021-01-18T09:55:00+05:30</updated><subtitle>Educate and solve problems is my mantra. I'm skilled in web development and a quick learner, I also like blogging and contributing to open source.</subtitle><entry><title>How to set your Blogspot blog for Twitter Card Validation</title><link href="https://prahladyeri.com/blog/2021/01/how-to-set-your-blogspot-blog-for-twitter-card-validation.html" rel="alternate"></link><published>2021-01-18T09:55:00+05:30</published><updated>2021-01-18T09:55:00+05:30</updated><author><name>Prahlad Yeri</name></author><id>tag:prahladyeri.com,2021-01-18:/blog/2021/01/how-to-set-your-blogspot-blog-for-twitter-card-validation.html</id><summary type="html">&lt;p&gt;One of the first things you want to do after publishing your blog is to share it with rest of the world and twitter is how most of you folks do it, right? But when you share your link in a tweet, you want it to expand into a proper …&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of the first things you want to do after publishing your blog is to share it with rest of the world and twitter is how most of you folks do it, right? But when you share your link in a tweet, you want it to expand into a proper card like this. But with Google's Blogspot blogs, it doesn't happen by default (at least as of today) even though it should be.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="twitter-card-blogger" src="/uploads/twitter-card-blogger.png"&gt;&lt;/p&gt;
+&lt;p&gt;This is what you must do in order for your blog's links to expand on twitter in the card format. Please note that if you change your theme later, you must redo this exercise each time as the new theme entirely rewrites the HTML template.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to Theme =&amp;gt; Customize =&amp;gt; Edit HTML and open the HTML editor window for the blog template.&lt;/li&gt;
+&lt;li&gt;Press "Control+F" and search for this phrase:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;b:includable&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;post&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;var&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;post&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Search it multiple times to make sure. In some templates, there are more than one of these sections and in those cases, we are interested in the last one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Just hit &lt;code&gt;&amp;lt;enter&amp;gt;&lt;/code&gt; to create some blank space just below this tag start line and enter the following code:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="c"&gt;&amp;lt;!-- Twitter Card Tags --&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;@prahladyeri&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter:site&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;@prahladyeri&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter:creator&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;b:if&lt;/span&gt; &lt;span class="na"&gt;cond&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data:post.firstImageUrl&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+       &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;summary_large_image&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter:card&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- summary_large_image or any other your card types --&amp;gt;&lt;/span&gt;
+       &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;expr:content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data:post.firstImageUrl&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter:image&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;b:elseif&lt;/span&gt; &lt;span class="na"&gt;cond&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data:blog.postImageUrl&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+       &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;summary&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter:card&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+       &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;expr:content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data:blog.postImageUrl&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter:image&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;b:elseif&lt;/span&gt; &lt;span class="na"&gt;cond&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data:blog.postImageThumbnailUrl&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+       &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;summary&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter:card&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+       &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;expr:content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data:blog.postImageThumbnailUrl&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter:image&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;b:else&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+       &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;summary&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter:card&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;https://1.bp.blogspot.com/-vCbJYZxPF80/XErJHU_gi7I/AAAAAAAACGU/WGznlnB-K8AnpZunzlHYuaxg6c1TA5UfwCPcBGAYYCw/s320/pexels-photo-261577.jpeg&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter:image&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;b:if&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Please remember to change the &lt;code&gt;twitter:site&lt;/code&gt;, &lt;code&gt;twitter:creator&lt;/code&gt; and the last &lt;code&gt;twitter:image&lt;/code&gt; meta tags (which is for the default image in case none is found in your post) as per what suits you.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Once you do this and save the template, visit the &lt;a href="https://cards-dev.twitter.com/validator"&gt;Twitter Card Validation Page&lt;/a&gt; to verify that your blog link expands into a proper card.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After that, you are ready to publish your blogspot link through a tweet and share it with the rest of the world!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Blogspot"></category></entry><entry><title>DIY Keyword Research for Small Bloggers using absolutely free tools</title><link href="https://prahladyeri.com/blog/2020/12/diy-keyword-research-for-small-bloggers-using-absolutely-free-tools.html" rel="alternate"></link><published>2020-12-06T11:00:00+05:30</published><updated>2020-12-06T11:00:00+05:30</updated><author><name>Prahlad Yeri</name></author><id>tag:prahladyeri.com,2020-12-06:/blog/2020/12/diy-keyword-research-for-small-bloggers-using-absolutely-free-tools.html</id><summary type="html">&lt;p&gt;There are a plethora of keyword research tools available in the market such as &lt;a href="https://www.semrush.com/"&gt;SEMRush&lt;/a&gt;, &lt;a href="https://ahrefs.com/dashboard"&gt;ahrefs&lt;/a&gt;, &lt;a href="https://kwfinder.com/"&gt;KWFinder&lt;/a&gt;, etc. and while a subscription to them makes sense if you are a small company or startup, it definitely doesn't for small bloggers who work with a limited budget.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="python code" src="/uploads/laptop-coffee-mobile.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;But even if you …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There are a plethora of keyword research tools available in the market such as &lt;a href="https://www.semrush.com/"&gt;SEMRush&lt;/a&gt;, &lt;a href="https://ahrefs.com/dashboard"&gt;ahrefs&lt;/a&gt;, &lt;a href="https://kwfinder.com/"&gt;KWFinder&lt;/a&gt;, etc. and while a subscription to them makes sense if you are a small company or startup, it definitely doesn't for small bloggers who work with a limited budget.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="python code" src="/uploads/laptop-coffee-mobile.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;But even if you have an absolutely zero budget, you can still perform decent keyword research and get the exact same results that these popular web services offer. However, you won't be served that information on a platter and you will have to work for it and setup your own workflow after sourcing inputs or raw material from various freely available tools. You must also know a little bit of scripting/programming and be prepared to write some scripts in a language like python.&lt;/p&gt;
+&lt;p&gt;Each blogger or researcher may have a different workflow with respect to keyword research, mine involves the following two tools:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://ads.google.com/aw/keywordplanner/"&gt;Google Keyword Planner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://answerthepublic.com/"&gt;AnswerThePublic.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Both are excellent and robust freely available tools (though the latter gets you only a limited number of searches each day which is fine if you're a small blogger who posts only few times a week).&lt;/p&gt;
+&lt;p&gt;In general, writing any article involves the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Determination of the topic and/or niche you want to publish about.&lt;/li&gt;
+&lt;li&gt;Research and gather information or sources about it (like books, wikipedia, online blogs, etc.)&lt;/li&gt;
+&lt;li&gt;Actually write the article.&lt;/li&gt;
+&lt;li&gt;Give it a decent or captivating headline.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Performing keyword research beforehand will help you with almost all these steps extensively. Firstly, it will help you determine which topic or niche you must blog about so that people actually find your content through search engines. In other words, you shouldn't end up writing an excellent piece about a topic which:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Nobody is interested in (low search volume).&lt;/li&gt;
+&lt;li&gt;Has so high competition that its very difficult to rank on the first page.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;These are the two areas which you must actively avoid if you want to blog for visibility or getting web traffic. Of course, there are hobby bloggers who post just for the sake of fun or writing passion and that's fine too.&lt;/p&gt;
+&lt;p&gt;Coming to the process of niche determination using keyword research, it involves two tasks:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Find out which keywords related to our broader topic are currently in vogue or trending.&lt;/li&gt;
+&lt;li&gt;Find out which among those related keywords have a combination of good search volume and less ranking difficulty.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;With Google Keyword Planner, both these tasks can be clubbed into one as it provides ways to both discover new keywords and getting search volume and forecasts for a given bunch of keywords (see below).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Google Keyword Planner Tool" src="/uploads/google_keyword_planner_tool.png"&gt;&lt;/p&gt;
+&lt;p&gt;An alternative process of niche determination involves using ATP (answerthepublic.com) for the first task as it provides a richer set of related keywords which are questions or slightly longer phrases which have the potential for attracting long tail search volume. You then input these longer keywords provided by ATP to the second part of the Google Planner Tool ("Get search volume and forecasts"). But keep in mind that you can't just lift the keywords from ATP and enter them directly to Google Keyword Planner tool!&lt;/p&gt;
+&lt;p&gt;Here is where scripting comes into picture. The CSV data exported by ATP has to be sanitized to the proper format (extra columns removed) so that it can be then entered to the Google Keyword Planner Tool. Scripting is also needed to store the output CSV from Google Planner to a proper database. Personally, I prefer &lt;code&gt;sqlite&lt;/code&gt; but &lt;code&gt;mysql&lt;/code&gt; is fine too. Google's output CSV has almost everything you need, almost everything which the other subscription based services provide.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Google Keyword Planner Results" src="/uploads/google_keyword_planner_results.png"&gt;&lt;/p&gt;
+&lt;p&gt;But the only catch is that its a DIY. You need to write your own program or script which imports this output to your database tables and stores data in the respective fields. "Avg. monthly searches" is quite apparent, you can use a long integer column called &lt;code&gt;searches&lt;/code&gt; to store this. "Competition" tells you qualitatively whether its high/medium/low for that keyword, and "Competition (Index Value)" does the same quantitatively. Its an index value ranging from 0 to 100 and often referred to as KD (Keyword Difficulty) in the other popular tools.&lt;/p&gt;
+&lt;p&gt;Once you've built your own workflow with automated scripts that involves importing and sanitizing data from ATP/Google, and storing it to a local database, you should be able to get what you want with a simple SQL query such as this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;select keyword from keywords where keyword like &amp;#39;%flask%&amp;#39; and searches &amp;gt;= 1000 and comp_idx &amp;lt; 30;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will return all keywords in the &lt;code&gt;python flask&lt;/code&gt; niche which has a good search volume (1000 or above) and less difficulty to rank (competition index is less than 30). You can then proceed to use those keywords for writing your article which will now have a greater visibility!&lt;/p&gt;
+&lt;p&gt;A paid tool like SEMRush or ahrefs would have give you the exact same results as this SQL query but your solution is custom and homegrown and most importantly, suited to your own workflow! The only difference is that your database won't be having billions keywords at the start but it will grow organically and gradually as you keep writing articles and keep researching new content.&lt;/p&gt;</content><category term="Keyword Research"></category><category term="SEO"></category></entry><entry><title>Migrating Disqus comments into Wordpress</title><link href="https://prahladyeri.com/blog/2020/03/comments-migration-from-disqus-to-wordpress.html" rel="alternate"></link><published>2020-03-11T13:25:00+05:30</published><updated>2020-03-11T13:25:00+05:30</updated><author><name>Prahlad Yeri</name></author><id>tag:prahladyeri.com,2020-03-11:/blog/2020/03/comments-migration-from-disqus-to-wordpress.html</id><summary type="html">&lt;p&gt;Further to my earlier blog post about &lt;a href="/blog/2017/09/demystifying-comments-migration-from-disqus-to-wordpress.html"&gt;How to Import Disqus comments into Wordpress&lt;/a&gt;, I've found that script solution to be a bit trickier for first time users who want to migrate disqus comments from their earlier blog to the new wordpress blog.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="PHP Code" src="/uploads/code-php.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;disqus_parse.php&lt;/code&gt; is exactly the same …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Further to my earlier blog post about &lt;a href="/blog/2017/09/demystifying-comments-migration-from-disqus-to-wordpress.html"&gt;How to Import Disqus comments into Wordpress&lt;/a&gt;, I've found that script solution to be a bit trickier for first time users who want to migrate disqus comments from their earlier blog to the new wordpress blog.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="PHP Code" src="/uploads/code-php.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;disqus_parse.php&lt;/code&gt; is exactly the same as it is because the parsing logic hasn't changed. However, a lot has changed in actual running of the console script (&lt;code&gt;console.php&lt;/code&gt;), so I've updated the same as follows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Modified the URL check which ensures that disqus post's URL path is the same as Wordpress post's URL path. I've found that its much more effective to match only the "path" portions of the respective URLs instead of including the entire domain, so I used &lt;code&gt;parse_url&lt;/code&gt; PHP function accordingly:&lt;/p&gt;
+&lt;p&gt;$cpath = parse_url($comment['url'], PHP_URL_PATH);
+$tpath = parse_url($t_url, PHP_URL_PATH);
+if ($cpath === $tpath) {
+...&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Added a &lt;code&gt;$sleep_interval&lt;/code&gt; parameter at the top of the script (default value is 2), this is needed sometimes because some Wordpress installations throw the error &lt;em&gt;"You are posting comments too quickly"&lt;/em&gt; when you try to append comments through a script. If this happens, you'll have to increase this parameter's value to 6 or sometimes 11 depending on the commenting user's status. If you want to avoid this check altogether and insert comments quickly, you can temporarily add the below line to the bottom of your &lt;code&gt;functions.php&lt;/code&gt; (but remember to revert back later once your comments are migrated!).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;add_filter(&amp;#39;comment_flood_filter&amp;#39;, &amp;#39;__return_false&amp;#39;);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;$post-&amp;gt;author-&amp;gt;name&lt;/code&gt; XML value may be in the array form sometimes, so I've added that check:&lt;/p&gt;
+&lt;p&gt;if (is_array($comment['name'])) {
+    $comment_author = (string)$comment['name'][0];
+}
+else {
+    $comment_author = (string)$comment['name'];
+}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Passed the &lt;code&gt;$avoid_die&lt;/code&gt; parameter as &lt;code&gt;true&lt;/code&gt; to the &lt;a href="https://developer.wordpress.org/reference/functions/wp_new_comment/"&gt;wp_new_comment&lt;/a&gt; function as its more useful and practical.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Below are the links to the latest scripts which you must run from inside a plugin directory such as &lt;code&gt;/wp-content/plugins/test/&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;console.php:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://gist.github.com/prahladyeri/e22e4e232416ff841be670601b396c62"&gt;https://gist.github.com/prahladyeri/e22e4e232416ff841be670601b396c62&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;disqus_parse.php:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://gist.github.com/prahladyeri/d1e19d8a6d0c7ff23fe3e15f9050b6d3"&gt;https://gist.github.com/prahladyeri/d1e19d8a6d0c7ff23fe3e15f9050b6d3&lt;/a&gt;&lt;/p&gt;</content><category term="Blogging"></category><category term="Disqus"></category><category term="Wordpress"></category></entry><entry><title>How to Import Disqus comments into Wordpress</title><link href="https://prahladyeri.com/blog/2017/09/demystifying-comments-migration-from-disqus-to-wordpress.html" rel="alternate"></link><published>2017-09-07T02:01:00+05:30</published><updated>2017-09-07T02:01:00+05:30</updated><author><name>Prahlad Yeri</name></author><id>tag:prahladyeri.com,2017-09-07:/blog/2017/09/demystifying-comments-migration-from-disqus-to-wordpress.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;**Update**&lt;/strong&gt; &lt;a href="/blog/2020/03/comments-migration-from-disqus-to-wordpress.html"&gt;Also check out this recent post which has further fixes and refactoring done to the console.php script&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Some time ago, I had switched from a self-hosted wordpress blog to a statically generated (Jekyll) blog hosted on Github Pages. For a commenting system, Disqus was quite an easy choice …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;**Update**&lt;/strong&gt; &lt;a href="/blog/2020/03/comments-migration-from-disqus-to-wordpress.html"&gt;Also check out this recent post which has further fixes and refactoring done to the console.php script&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Some time ago, I had switched from a self-hosted wordpress blog to a statically generated (Jekyll) blog hosted on Github Pages. For a commenting system, Disqus was quite an easy choice at that time since it was zero hassle for us site owners, and Disqus did all the heavy lifting from filtering the comments to storing and displaying them.&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/uploads/2017/09/pexels-photo-262508.jpg"&gt;&lt;img alt="Blog" class="size-full wp-image-372" height="197" src="/uploads/2017/09/pexels-photo-262508.jpg" width="297"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;But as time went on, I started realizing that implementing a static blog was not quite the right thing. Firstly, there were &lt;a href="https://en.wikipedia.org/wiki/Disqus#Criticism_and_privacy_concerns"&gt;privacy issues&lt;/a&gt; around Disqus because of which many readers of my blog were discouraged from commenting. Secondly, the concept of a "static site" itself felt quite constraining to me as I couldn't implement things like contact form or a questionnaire to interact with my viewers. As a result, I decided to switch back to a plain old self-hosted wordpress blog.&lt;/p&gt;
+&lt;p&gt;Now, importing the posts was quite straightforward using the Jekyll generated RSS feed link that was pretty straightforward to use. In case you don't have it in your Jekyll blog, its very easy to write one using liquid template. Just create a file named &lt;strong&gt;rss.xml&lt;/strong&gt; in your root folder with below contents:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;rss&lt;/span&gt; &lt;span class="na"&gt;version=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2.0&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;xmlns:atom=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/2005/Atom&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;channel&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;site.name&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nf"&gt;xml_escape&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt; - Articles&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;description&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;site.description&lt;/span&gt; &lt;span class="cp"&gt;%}{{&lt;/span&gt; &lt;span class="nv"&gt;site.description&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nf"&gt;xml_escape&lt;/span&gt; &lt;span class="cp"&gt;}}{%&lt;/span&gt; &lt;span class="k"&gt;endif&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;link&amp;gt;&lt;/span&gt;
+ &lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;site.url&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/link&amp;gt;&lt;/span&gt;
+ &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;post&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;site.posts&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+ &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="nv"&gt;post.link&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;item&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;post.title&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nf"&gt;xml_escape&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;description&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;post.content&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nf"&gt;xml_escape&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;pubDate&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;post.date&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nf"&gt;date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;%a, %d %b %Y %H:%M:%S %z&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/pubDate&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;link&amp;gt;&lt;/span&gt;
+ &lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;site.url&lt;/span&gt; &lt;span class="cp"&gt;}}{{&lt;/span&gt; &lt;span class="nv"&gt;post.url&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/link&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;guid&lt;/span&gt; &lt;span class="na"&gt;isPermaLink=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;site.url&lt;/span&gt; &lt;span class="cp"&gt;}}{{&lt;/span&gt; &lt;span class="nv"&gt;post.url&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/guid&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+ &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endunless&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+ &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;/channel&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/rss&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once you generate the blog, you can import all posts into your wordpress by referring to the &lt;strong&gt;/rss.xml&lt;/strong&gt; url on your existing Jekyll blog.&lt;/p&gt;
+&lt;p&gt;However, the bigger issue here was importing the Disqus comments, becuase while Disqus does allow you to &lt;a href="https://help.disqus.com/customer/portal/articles/472149-comments-export"&gt;export a dump of your site comments&lt;/a&gt;, their XML format is pretty weird and isn't the standard one used by wordpress and other blogging systems, as a result of which there aren't too many ready tools for importing comments from this format to any other system.&lt;/p&gt;
+&lt;p&gt;As a result, I had to write my own Wordpress importer tool. Since I did not want to go through the hassle of learning to create an "admin plugin" with all the bells and whistles, I decided to write a simple PHP console script to import the XML as mentioned &lt;a href="https://wordpress.stackexchange.com/a/76466/52396"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;All I needed were two scripts: A parser script to parse the XML output of Disqus comments dump, and secondly, a wordpress handler that loops through these comments and imports them one by one by matching the post's url attribute and running &lt;strong&gt;wp_new_comment()&lt;/strong&gt; to insert the comment (you can also use the older &lt;strong&gt;wp_insert_comment()&lt;/strong&gt;, but its not the recommended way according to the wordpress codex).&lt;/p&gt;
+&lt;p&gt;Below is the source code for both these files. First one, &lt;strong&gt;console.php&lt;/strong&gt; is the wordpress handler that you need to run, passing the path of the Disqus comments dump file. And &lt;strong&gt;disqus_parse.php&lt;/strong&gt; is the parser which is called internally by console.php. You need to copy these two files anywhere inside your WP folder structure (I copied them to &lt;strong&gt;/wp-content/plugins/test/&lt;/strong&gt; folder), and run the console.php from the command line:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;console.php:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://gist.github.com/prahladyeri/e22e4e232416ff841be670601b396c62"&gt;https://gist.github.com/prahladyeri/e22e4e232416ff841be670601b396c62&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;disqus_parse.php&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://gist.github.com/prahladyeri/d1e19d8a6d0c7ff23fe3e15f9050b6d3"&gt;https://gist.github.com/prahladyeri/d1e19d8a6d0c7ff23fe3e15f9050b6d3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Finally, just keep one thing in mind before running the console.php. Your wordpress system might throw an exception in case it detects too many comments being inserted in a loop. To suppress that exception, you need to add the following line of code to the end of your theme's &lt;strong&gt;functions.php&lt;/strong&gt; to disable the comment flood filter:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;add_filter(&amp;#39;comment_flood_filter&amp;#39;, &amp;#39;__return_false&amp;#39;);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Of course, remember to comment that line once you are done importing the comments.&lt;/p&gt;</content><category term="Blogging"></category><category term="Disqus"></category><category term="Wordpress"></category></entry><entry><title>How to know whether my blog post will attract traffic or not</title><link href="https://prahladyeri.com/blog/2015/06/how-to-know-whether-my-blog-post-will-attract-traffic-or-not.html" rel="alternate"></link><published>2015-06-10T18:30:00+05:30</published><updated>2015-06-10T18:30:00+05:30</updated><author><name>Prahlad Yeri</name></author><id>tag:prahladyeri.com,2015-06-10:/blog/2015/06/how-to-know-whether-my-blog-post-will-attract-traffic-or-not.html</id><summary type="html">&lt;p&gt;One of the evergreen topics for discussions in the blogging world is SEO, and especially the various ways of attracting bless of the all-pervading search engines to one’s own site or blog. There are various ways to approach this problem, some of the popular ones are:&lt;!--more--&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Using meta tags …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;One of the evergreen topics for discussions in the blogging world is SEO, and especially the various ways of attracting bless of the all-pervading search engines to one’s own site or blog. There are various ways to approach this problem, some of the popular ones are:&lt;!--more--&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Using meta tags like &lt;code&gt;keyword&lt;/code&gt; and &lt;code&gt;description&lt;/code&gt; to attract the search engines.&lt;/li&gt;
+&lt;li&gt;Performing keyword research (using Google Adword tool or similar).&lt;/li&gt;
+&lt;li&gt;Getting Link juice through social media marketing.&lt;/li&gt;
+&lt;li&gt;Hiring SEO experts or web designers to get some arcane suggestions.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;But lost in these technical fads, people are forgetting one basic foundation upon which the internet is built: &lt;code&gt;CONTENT IS KING&lt;/code&gt;. Yes, the sad truth is that Google (or Yahoo/Bing for that matter) cannot be fooled by any of these tools in the &lt;code&gt;long term&lt;/code&gt;. Doing some social media marketing on Facebook might place your article on #1 position for a short period of time, but sooner or later, Google will figure out whether your content is actually worth it or not.&lt;/p&gt;
+&lt;p&gt;But how do you write good content, and also ensure that it has some uniqueness that the million other sites on the internet don’t already have? Well, I can’t help you with the first question. Since &lt;em&gt;you&lt;/em&gt; know what your area of expertise is, only you can come up with a good topic and subject-matter for your blog or site. For instance, Web Development is my area of expertise, and I came up with this particular topic you are reading right now.&lt;/p&gt;
+&lt;p&gt;But I can certainly help you with the second question! Doing some research on this matter and performing a topic-wise traffic analysis of my own blog, has proven to me this one thing: &lt;code&gt;CONTENT IS KING&lt;/code&gt;. So, my method of figuring out whether your article/post will rock or not, is based upon this simple canon. Once you decide the topic and subject-matter of your next blog post, do this simple reality check before you even bother drafting it:&lt;/p&gt;
+&lt;p&gt;Almost every Googler is looking for a specific solution for a problem or issue, be it shopping for a product, knowing a url address or researching something. So, your next post or article should solve that problem in order to pass the &lt;code&gt;CONTENT&lt;/code&gt; test. To get a quick idea of the competition, perform a Google search from the point of view of your potential Googler! A glance at the results will instantly tell you whether this problem is already solved, and by how many.&lt;/p&gt;
+&lt;p&gt;For instance, before publishing this article, I did this simple Google search:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;How to know whether my blog post will attract traffic or not
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And this is what I got:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="How to know whether my blog post will attract traffic or not" src="/uploads/old/how-to-know-whether-blog-topic-gets-traffic.png"&gt;&lt;/p&gt;
+&lt;p&gt;All those are top ranking sites and deserve to be on page one (no offence meant to them). However, for someone specifically looking for a solution to this question (agreed, however small that set of users be), none of them have an immediate answer that could be surmised by the search result summary. Whilst they are all making clear points about &lt;code&gt;WAYS&lt;/code&gt; to increase search engine traffic, none of them talks about knowing, in priory, whether a given method will work or not. So, at least for this particular query (maybe used by about 1% of all bloggers), my blog post deserves to be amongst those page one results - and sure it will, because it has the only one thing that matters for Google - &lt;code&gt;CONTENT&lt;/code&gt;.&lt;/p&gt;</content><category term="Blogging"></category><category term="Wordpress"></category><category term="How To"></category></entry></feed>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<meta charset="utf-8" />
+	<title>Docker is the best thing to happen to Linux since the GNU bread - Prahlad Yeri</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="It has become an oft-repeated cliche now that docker has become the latest buzzword, both in DevOps circles as well as the open source community. But being the ever cynic and contrarian, I wasn't quite convinced of its merits and until quite recently, I thought it was just another hype …">
+	<meta name="author" content="Prahlad Yeri">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="/theme/css/app.css">
+	<link rel="stylesheet" href="/theme/css/pygment.css">		
+	<link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/avatar/3f253507b82dd33f352c08f649caaa54" />
+	<link href="https://prahladyeri.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Prahlad Yeri's Blog Full Atom Feed" />
+	<link href="https://prahladyeri.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Prahlad Yeri's Blog Full RSS Feed" />
+	<link href="https://prahladyeri.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Prahlad Yeri's Blog Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="Docker" />
+    <meta name="tags" content="Linux" />
+
+	
+	
+	<!-- twitter card meta data -->
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@prahladyeri" />
+	<meta name="twitter:creator" value="@prahladyeri" />
+		<link rel="canonical" content="https://prahladyeri.com/blog/2018/09/docker-is-the-best-thing-to-happen-to-linux-since-the-gnu-bread.html" />
+		<meta name="twitter:url" content="https://prahladyeri.com/blog/2018/09/docker-is-the-best-thing-to-happen-to-linux-since-the-gnu-bread.html" />
+		<meta name="twitter:title" content="Docker is the best thing to happen to Linux since the GNU bread" />
+		<meta name="twitter:description" content="It has become an oft-repeated cliche now that docker has become the latest buzzword, both in DevOps circles as well as the open source community. But being the ever cynic and contrarian, I wasn't quite convinced of its merits and until quite recently, I thought it was just another hype …" />
+			<meta name="twitter:image" content="https://prahladyeri.com/uploads/cover.jpg" />
+
+	<!-- open graph meta data (TODO) -->
+	
+	<!--start: analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6808883-5"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-6808883-5');
+	</script>
+	<!--end: analytics -->
+	
+<!--pinterest claim-->
+<meta name="p:domain_verify" content="eb43d46309e2766ef1b627cea2d19326"/>
+</head>
+
+<body id="index" class="home">
+<!-- section bootstrap-menu -->
+<div class='container'>
+<div class='row header'>
+	<div class='col-md-12 text-center' style='margin: 10px 0 0 0'>
+		<h2>Prahlad Yeri</h2>
+		<h6 class='text-muted'>Freelance Programmer and Writer</h6>
+	</div>
+	<div class='col-md-12 text-center' >
+		<ul class="nav nav-fill text-center site-links col-md-8 ml-auto mr-auto">
+		<li class="nav-item"><a class="nav-link btn btn-primary" href="/">Home</a></li>
+		<li class="nav-item"><a class="nav-link btn btn-success" href="/blog">Blog</a></li>
+		<li class="nav-item"><a class="nav-link btn btn-danger" href="/portfolio">Portfolio</a></li>
+		<li class="nav-item"><a class="nav-link btn btn-secondary" href="https://github.com/prahladyeri/resume">Resume</a></li>
+		<li class="nav-item"><a class="nav-link btn btn-warning" href="/hire-me">Hire Me</a></li>
+		<li class='nav-item dropdown'>
+			<a class="nav-link dropdown-toggle btn btn-dark" id='btnSocial' href="javascript:" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Social</a>
+			<div class="dropdown-menu" aria-labelledby="btnSocial">
+				<a class="dropdown-item" href="https://twitter.com/prahladyeri">Twitter</a>
+				<a class="dropdown-item" href="https://github.com/prahladyeri">Github</a>
+				<a class="dropdown-item" href="https://www.linkedin.com/in/prahlad-yeri-243a5316">Linkedin</a>
+				<a class="dropdown-item" href="https://www.quora.com/profile/Prahlad-Yeri">Quora</a>
+				<a class="dropdown-item" href="https://www.instagram.com/prahladyeri14/">Instagram</a>
+				<a class="dropdown-item" href="mailto:prahladyeri@yahoo.com">Email</a>
+			</div>
+		</li>
+		<li class='btn-group'>
+			<a class="nav-link dropdown-toggle btn btn-info" role='button' id='btnFeeds' href="javascript:" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Feeds</a>
+			<div class="dropdown-menu" aria-labelledby="btnFeeds">
+				<a class="dropdown-item" href="/feeds/all.rss.xml">RSS</a>
+				<a class="dropdown-item" href="/feeds/all.atom.xml">ATOM</a>
+				<a class="dropdown-item" href="https://feedburner.google.com/fb/a/mailverify?uri=prahladyeri&amp;loc=en_US">Feedburner</a>
+			</div>
+		</li>
+		</ul>
+	</div>
+</div>
+
+<div class='row'>
+	<div class='ml-auto col-md-8 mr-auto'>
+	</div>
+</div>
+</div>
+
+		<div id="main" class='mt-2 container content '>
+			<div class='row'>
+				<div class='offset-md-2 col-md-8'>
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <span class="text-secondary" href="https://prahladyeri.com/blog/2018/09/docker-is-the-best-thing-to-happen-to-linux-since-the-gnu-bread.html" rel="bookmark" 
+      title="Permalink to Docker is the best thing to happen to Linux since the GNU bread">Docker is the best thing to happen to Linux since the GNU bread</span></h2>
+ 
+  </header>
+  <footer class="post-info clearfix">
+	<span class='float-left'>
+    <time class="text-muted published" datetime="2018-09-13T09:00:00+05:30">Thu 13 September 2018</time>
+    <div class="text-muted vcard author">
+      By           <a class="url fn" href="https://prahladyeri.com/">Prahlad Yeri</a>
+    </div>
+	</span>
+	<div class='float-right'>
+    <div class="text-muted tags">
+        Tags:
+            <a href="https://prahladyeri.com/tag/docker.html">Docker</a>
+            <a href="https://prahladyeri.com/tag/linux.html">Linux</a>
+    </div>
+    <div class="text-muted category">
+        Category: <a href="https://prahladyeri.com/category/technology.html">Technology</a>
+    </div>
+	</div>
+  </footer><!-- /.post-info -->
+  <br>
+  <div class="entry-content">
+    <p>It has become an oft-repeated cliche now that docker has become the latest buzzword, both in DevOps circles as well as the open source community. But being the ever cynic and contrarian, I wasn't quite convinced of its merits and until quite recently, I thought it was just another hype that will come and go like all other things.<!--more--></p>
+<p>After all, software configuration management has been going on nicely without these kinds of virtualization tools since ages, and since I can install and configure php/python/apache/nginx/whatever on any given LAMP box, and there is already virtualbox to create a parallel LAMP setup on my laptop, why exactly do I need docker?</p>
+<p>But some months ago, I came to understand that the contributors to the docker project included some of the biggest industry leaders such as <a href="https://en.wikipedia.org/wiki/Docker_(software)#Adoption">Google, Microsoft, IBM, Cisco and Red Hat</a>, and Linux is their primary development platform! Now, all of these professional companies couldn't have possibly bet on the wrong horse, isn't it? So, I got interested and started exploring a bit more about docker and learned that it sat somewhere between pure hardware virtualization like VirtualBox/VMWare and the slow software emulation like QEMU.</p>
+<p>In fact, docker uses existing linux tools and libraries like iptables, apparmor, SELinux and libvirt to create an efficient solution for containerized running of your apps. This parallel environment is called <strong>container</strong>, and unlike the other parallel environment called VMs, a container is a lot more efficient and conservative of resources (memory and cores), since it doesn't have to emulate or churn up an entirely new virtual kernel or operating system. The isolation is there at the application level, not at the operating system level which is exactly the need of the hour in about 90% of use cases for software engineers. I think the below diagram illustrates this point very well:</p>
+<p><img alt="Docker Containers vs Virtualbox VMs" height="491" src="https://www.docker.com/sites/default/files/styles/large/public/compare/docker-containerized-and-vm-transparent-bg.png?itok=nyQG8a_p" width="1200"></p>
+<p><strong>Docker Containers vs Virtualbox VMs (<em>Image Source: <a href="https://www.docker.com">Docker.com</a></em>)</strong></p>
+<p>Emulating a system or running an app in a jailed or containerized environment is just one use case of docker, another and probably more popular use case is <strong>deployment</strong> and <strong>integration testing</strong>. The advantage of using containerized deployment is that you don't actually have to install php and nginx to run wordpress, you don't actually have to install python and flask to run a flask app!</p>
+<p>All the developer does is builds a docker <em>image</em> (of which a container is an instance) and your image can derive from and add reference to one of the several official pre-built ones on the docker hub such as <a href="https://hub.docker.com/_/python/">Python</a>, <a href="https://hub.docker.com/_/php/">PHP,</a> <a href="https://hub.docker.com/_/nginx/">nginx</a>, etc. All a developer has to do is define a thing called <a href="https://docs.docker.com/engine/reference/builder/">DockerFile</a> (the source code used to build an image), add reference to Python or whatever (there are variants like <em>python:slim</em> or <em>python-\&lt;version></em> to take care of specific cases), add his source code files (including <em>requirements.txt</em> to pull the packages from pypi if need be), build, run, test and push the container to the <a href="https://hub.docker.com">docker hub</a> and be done with it! The developer runs a container which is entirely self-contained and entirely separated from his actual system. You don't need to have python, php or any of the image dependencies on your actual system, you've developed your entire application without installing a single software on your system, and without resorting to heavy parallelization tools like VMs, can you even imagine how magical that feels!</p>
+<p>Once the developer pushes the image to docker hub, the DevOps or sysadmin can pull that image from there and install it on his production, testing or whatever cloud instance and just run it. Without any single configuration change, the container will run exactly as it ran on developer's environment which is just magically innovative! You've essentially abstracted away your application development and deployment to such an extent that its no longer necessary for developer and DevOps to communicate or agree on any conventions, or even know each other at all!</p>
+<p>The separation of concerns between a docker container or image, and the underlying linux system is what does this whole magic:</p>
+<p><img alt="Docker Engine Components" class="size-full wp-image-1053" height="385" src="/uploads/2018/09/docker-engine-components-flow.png" width="492"></p>
+<p><strong>Docker Engine Components</strong></p>
+<p>Docker runs as a systemd service or daemon on your linux system and is responsible for keeping this separation intact and basic errands like building an image from DockerFile, running a container from the image, list down, track and clean images and containers, push images to docker hub, etc. And all this happens using a single docker command which is easy to grasp once you start using it:</p>
+<div class="highlight"><pre><span></span>## List CLI commands
+docker
+docker container --help
+
+## Display version and info
+docker --version
+docker version
+docker info
+
+## Execute image
+docker run hello-world
+
+## List images
+docker image ls #or docker images
+
+## List containers (running, all, all in quiet mode)
+docker container ls
+docker container ls --all
+docker container ls -aq
+</pre></div>
+
+
+<p>Of course, an entire tutorial on docker is out of scope for this article, but I'd like to leave some useful links to help you install, learn and use it:</p>
+<ul>
+<li><a href="https://docs.docker.com">Docker Official Documentation</a></li>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Installing Docker Community Edition on Ubuntu</a></li>
+<li><a href="https://www.docker.com/resources/what-container">What is a Docker Container</a></li>
+<li><a href="https://docs.docker.com/get-started/part2/">Getting Started With Containers</a></li>
+<li><a href="https://hub.docker.com">Docker Hub (The Docker equivalent of Github)</a></li>
+</ul>
+  </div><!-- /.entry-content -->
+
+	<!-- Start: Prahlad -->
+	<script>
+	$(document).ready(function(){
+		$(".entry-content table").addClass("table table-bordered table-sm");
+	});
+	</script>
+
+	<!--start: adsense-->
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- mainsite_responsive -->
+	<ins class="adsbygoogle"
+		 style="display:block"
+		 data-ad-client="ca-pub-0428291735937735"
+		 data-ad-slot="6897031752"
+		 data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	<!--end: adsense-->
+	
+	
+	
+	<!-- End: Prahlad -->
+</section>
+				</div>
+				<div class='col-md-2 amz-block-right '> <!--align-self-center-->
+					<div style='margin-top: 50px;'>
+
+<!-- AMAZON AFFILIATE ADS -->
+<!--
+<a href="https://www.amazon.in/Automate-Boring-Stuff-Python-2nd/dp/1593279922/ref=as_li_ss_il?crid=JA705IOUH74O&keywords=automate+the+boring+stuff+with+python&qid=1583912586&sprefix=automate+the+,aps,460&sr=8-1&linkCode=li2&tag=prahladyeri-21&linkId=5f899269cc1aea74977c02963a9a6caf&language=en_IN" target="_blank"><img border="0" src="//ws-in.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1593279922&Format=_SL160_&ID=AsinImage&MarketPlace=IN&ServiceVersion=20070822&WS=1&tag=prahladyeri-21&language=en_IN" ></a><img src="https://ir-in.amazon-adsystem.com/e/ir?t=prahladyeri-21&language=en_IN&l=li2&o=31&a=1593279922" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.in/PYTHON-PROGRAMMING-BEGINNERS-GUIDE-LEARN-ebook/dp/B01GSODGZC/ref=as_li_ss_il?crid=33LIIMVDMW1U3&keywords=python+programming&qid=1583912662&sprefix=python,aps,527&sr=8-4&linkCode=li2&tag=prahladyeri-21&linkId=6b3a8b38eda1d6c51546a1a0c321cfea&language=en_IN" target="_blank"><img border="0" src="//ws-in.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01GSODGZC&Format=_SL160_&ID=AsinImage&MarketPlace=IN&ServiceVersion=20070822&WS=1&tag=prahladyeri-21&language=en_IN" ></a><img src="https://ir-in.amazon-adsystem.com/e/ir?t=prahladyeri-21&language=en_IN&l=li2&o=31&a=B01GSODGZC" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+-->
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+<div class='container-fluid'>
+<div class='row'>
+		<footer id ="footer" class="col-md-12 text-center bg-dark text-white pt-1 pb-1 pl-1 pr-1">
+		Copyright (&copy;) 2014-2021 Prahlad Yeri. This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+		</footer>
+</div>
+</div>		
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- <script src="/theme/js/popper.min.js"></script> -->
+<!-- <script src="/theme/js/bootstrap.min.js"></script> -->
+</body>
+</html>
