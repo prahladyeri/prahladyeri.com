@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>Prahlad Yeri's Blog - Categories</title>
+  	<meta charset="utf-8" />
+	<title>The Right Way to serve static files when using Django with Gunicorn - Prahlad Yeri</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Educate and solve problems is my mantra. I'm skilled in web development and a quick learner, I also like blogging and contributing to open source." />
+	<meta name="description" content="Yesterday, I learned during deployment that your Django app when used in combination with gunicorn will refuse to serve static files, do whatever you may. I looked up almost every Stack Overflow answer post on this topic including this, this and this. I meddled with almost every hopeful setting including …">
 	<meta name="author" content="Prahlad Yeri">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -13,16 +13,25 @@
 	<link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/avatar/3f253507b82dd33f352c08f649caaa54" />
 	<link href="https://prahladyeri.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Prahlad Yeri's Blog Full Atom Feed" />
 	<link href="https://prahladyeri.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Prahlad Yeri's Blog Full RSS Feed" />
+	<link href="https://prahladyeri.com/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Prahlad Yeri's Blog Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="Django" />
+    <meta name="tags" content="Gunicorn" />
+
 	
 	
 	<!-- twitter card meta data -->
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@prahladyeri" />
 	<meta name="twitter:creator" value="@prahladyeri" />
-		<meta name="twitter:url" content="https://prahladyeri.com" />
-		<meta name="twitter:title" content="Prahlad Yeri's Blog" />
-		<meta name="twitter:description" content="Educate and solve problems is my mantra. I'm skilled in web development and a quick learner, I also like blogging and contributing to open source." />
-		<meta name="twitter:image" content="https://secure.gravatar.com/avatar/3f253507b82dd33f352c08f649caaa54" />
+		<link rel="canonical" content="https://prahladyeri.com/blog/2021/04/the-right-way-to-serve-static-files-when-using-django-with-gunicorn.html" />
+		<meta name="twitter:url" content="https://prahladyeri.com/blog/2021/04/the-right-way-to-serve-static-files-when-using-django-with-gunicorn.html" />
+		<meta name="twitter:title" content="The Right Way to serve static files when using Django with Gunicorn" />
+		<meta name="twitter:description" content="Yesterday, I learned during deployment that your Django app when used in combination with gunicorn will refuse to serve static files, do whatever you may. I looked up almost every Stack Overflow answer post on this topic including this, this and this. I meddled with almost every hopeful setting including …" />
+			<meta name="twitter:image" content="https://prahladyeri.com/uploads/code.jpg" />
 
 	<!-- open graph meta data (TODO) -->
 	
@@ -89,25 +98,77 @@
 		<div id="main" class='mt-2 container content '>
 			<div class='row'>
 				<div class='offset-md-2 col-md-8'>
-    <h1 >Categories</h1>
-    <ul>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/android.html">Android</a> (3)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/blogging.html">Blogging</a> (5)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/business.html">Business</a> (1)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/education.html">Education</a> (1)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/go.html">Go</a> (1)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/java.html">Java</a> (9)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/javascript.html">JavaScript</a> (8)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/linux.html">Linux</a> (21)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/open-source.html">Open Source</a> (6)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/php.html">PHP</a> (13)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/python.html">Python</a> (17)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/seo.html">SEO</a> (1)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/software-engineering.html">Software Engineering</a> (1)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/technology.html">Technology</a> (14)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/web-development.html">Web Development</a> (3)</li>
-        <li style="display: inline-block;"><a href="https://prahladyeri.com/category/windows.html">Windows</a> (2)</li>
-    </ul>
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <span class="text-secondary" href="https://prahladyeri.com/blog/2021/04/the-right-way-to-serve-static-files-when-using-django-with-gunicorn.html" rel="bookmark" 
+      title="Permalink to The Right Way to serve static files when using Django with Gunicorn">The Right Way to serve static files when using Django with Gunicorn</span></h2>
+ 
+  </header>
+  <footer class="post-info clearfix">
+	<span class='float-left'>
+    <time class="text-muted published" datetime="2021-04-19T09:55:00+05:30">Mon 19 April 2021</time>
+    <div class="text-muted vcard author">
+      By           <a class="url fn" href="https://prahladyeri.com/">Prahlad Yeri</a>
+    </div>
+	</span>
+	<div class='float-right'>
+    <div class="text-muted tags">
+        Tags:
+            <a href="https://prahladyeri.com/tag/django.html">Django</a>
+            <a href="https://prahladyeri.com/tag/gunicorn.html">Gunicorn</a>
+    </div>
+    <div class="text-muted category">
+        Category: <a href="https://prahladyeri.com/category/python.html">Python</a>
+    </div>
+	</div>
+  </footer><!-- /.post-info -->
+  <br>
+  <div class="entry-content">
+    <p>Yesterday, I learned during deployment that your <code>Django</code> app when used in combination with <code>gunicorn</code> will refuse to serve static files, do whatever you may. I looked up almost every Stack Overflow answer post on this topic including <a href="https://stackoverflow.com/questions/59857966/static-files-not-loading-in-production">this</a>, <a href="https://stackoverflow.com/questions/54972837/django-2-1-static-files-loading-in-production-but-not-development">this</a> and <a href="https://stackoverflow.com/questions/59857966/static-files-not-loading-in-production">this</a>.</p>
+<p><img alt="python-source-code" src="/uploads/code.jpg"></p>
+<p>I meddled with almost every hopeful setting including <code>STATICFILES_DIRS[]</code>, <code>STATIC_ROOT</code> and <code>STATIC_URL</code> but to no avail. Its as if Django is designed to refuse serving of static files when using <code>gunicorn</code> and that's what I started to suspect after everything failed.</p>
+<p>And my suspicion was almost confirmed by <a href="https://stackoverflow.com/questions/20175243/django-gunicorn-not-load-static-files">this post</a> which says that:</p>
+<blockquote>
+<p>Gunicorn will only serve the dynamic content, i.e. the Django files</p>
+</blockquote>
+<p>But I know that's not strictly true because I've used Gunicorn with Flask in the past and it serves static files of your Flask app without any issues at all!</p>
+<p>But then I thought that its better to handle static files using <code>nginx</code> anyway and since I was already using <code>nginx</code> as the front proxy on my server anyway, I thought of trying that post's suggestion. As mentioned, I added a new location section to my <code>nginx</code> configuration file as follows:</p>
+<div class="highlight"><pre><span></span>location /static <span class="o">{</span>
+        autoindex on<span class="p">;</span>
+        <span class="nb">alias</span> /path/to/staticfiles<span class="p">;</span>
+    <span class="o">}</span>
+</pre></div>
+
+
+<p>And that's exactly what worked! I bypassed <code>gunicorn</code> entirely and static files are now being served directly by the front server and I think this is a more efficient setup than having <code>gunicorn</code> serve the static files.</p>
+<p>But why <code>gunicorn/django</code> refuse to serve static files directly still remain a mystery. I think the problem lies somewhere in Django and not gunicorn because as I said, I've seen gunicorn serve Flask static files before.</p>
+  </div><!-- /.entry-content -->
+
+	<!-- Start: Prahlad -->
+	<script>
+	$(document).ready(function(){
+		$(".entry-content table").addClass("table table-bordered table-sm");
+	});
+	</script>
+
+	<!--start: adsense-->
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- mainsite_responsive -->
+	<ins class="adsbygoogle"
+		 style="display:block"
+		 data-ad-client="ca-pub-0428291735937735"
+		 data-ad-slot="6897031752"
+		 data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	<!--end: adsense-->
+	
+	
+	
+	<!-- End: Prahlad -->
+</section>
 				</div>
 				<div class='col-md-2 amz-block-right '> <!--align-self-center-->
 					<div style='margin-top: 50px;'>
