@@ -31,7 +31,7 @@ html, body {
 }
 
 body {
-	font-family: "segoe ui",sans-serif;
+	font-family: rubik,"roboto slab","segoe ui",sans-serif;
 	min-height: 100%;
 	height: auto !important;
 }
@@ -125,7 +125,7 @@ ul.site-links .dropdown-item:focus
 }
 
 nav#mainHeader {
-	font-family: "segoe ui", sans-serif;
+	font-family: rubik,"roboto slab","segoe ui", sans-serif;
 	padding-top: 0px;
 	padding-bottom: 0px;
 }
