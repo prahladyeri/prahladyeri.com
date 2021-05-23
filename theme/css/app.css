@@ -31,7 +31,7 @@ html, body {
 }
 
 body {
-	font-family: rubik,"roboto slab","segoe ui",sans-serif;
+	font-family: "roboto slab",rubik,"segoe ui",sans-serif;
 	min-height: 100%;
 	height: auto !important;
 }
